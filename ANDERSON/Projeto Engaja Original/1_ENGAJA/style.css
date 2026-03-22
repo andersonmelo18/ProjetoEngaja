@@ -140,6 +140,21 @@ nav {
     letter-spacing: -1px;
 }
 
+/* --- ADICIONE ISTO AQUI --- */
+.logo-wrapper a {
+    text-decoration: none !important;
+    outline: none;
+    border: none;
+}
+
+/* Garante que o estado "visitado" (roxo) não apareça */
+.logo-wrapper a:visited, 
+.logo-wrapper a:active {
+    text-decoration: none !important;
+    color: inherit; /* Mantém a cor original do texto */
+}
+/* -------------------------- */
+
 /* MENU LATERAL (Sempre Hamburguer) */
 .nav-links {
     position: fixed;
@@ -242,6 +257,31 @@ nav {
     justify-content: space-between;
     align-items: center;
     gap: var(--space-lg);
+}
+
+/* Estilo das Redes Sociais no Footer */
+.social-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--color-white) !important; /* Força o ícone a ser branco */
+    font-size: 1.5rem;
+    text-decoration: none !important;
+    transition: all var(--transition-fast);
+    display: inline-block;
+}
+
+/* Garante que o estado "visitado" continue branco */
+.social-links a:visited {
+    color: var(--color-white) !important;
+}
+
+.social-links a:hover {
+    color: var(--color-primary) !important; /* Laranja ao passar o mouse */
+    transform: translateY(-3px);
 }
 
 .menu-overlay {
