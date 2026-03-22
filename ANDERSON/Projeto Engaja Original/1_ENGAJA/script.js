@@ -5,12 +5,13 @@ const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
 /* =============================================================
-   1. MENU MOBILE
+   1. MENU GLOBAL (HAMBURGUER EM TUDO)
    ============================================================= */
 const Menu = (() => {
     const hamburger = $('#hamburger');
     const navMenu = $('#nav-menu');
-    const overlay = $('#overlay');
+    // AJUSTE: O seu CSS usava a classe .menu-overlay, alteramos aqui para bater
+    const overlay = $('.menu-overlay');
     const body = document.body;
 
     if (!hamburger || !navMenu || !overlay) return;
@@ -31,12 +32,16 @@ const Menu = (() => {
         navMenu.classList.contains('active') ? close() : open();
     };
 
+    // Listeners
     hamburger.addEventListener('click', toggle);
     overlay.addEventListener('click', close);
 
-    $$('.nav-links a').forEach(link =>
-        link.addEventListener('click', close)
-    );
+    // Fecha o menu ao clicar em qualquer link (importante para One Page)
+    $$('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            Menu.close();
+        });
+    });
 
     return { open, close };
 })();
@@ -46,7 +51,6 @@ const Menu = (() => {
    ============================================================= */
 const Accordion = (() => {
     const items = $$('.accordion-item');
-
     if (!items.length) return;
 
     const closeAll = () => {
@@ -59,12 +63,11 @@ const Accordion = (() => {
 
     items.forEach(item => {
         const header = item.querySelector('.accordion-header');
-        const icon = header?.querySelector('i');
-
         if (!header) return;
 
         header.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
+            const icon = header.querySelector('i');
 
             closeAll();
 
@@ -77,29 +80,21 @@ const Accordion = (() => {
 })();
 
 /* =============================================================
-   3. HEADER SCROLL (OTIMIZADO)
+   3. HEADER SCROLL (PERFORMANCE)
    ============================================================= */
 const HeaderScroll = (() => {
     const header = $('header');
     if (!header) return;
 
-    let lastScroll = 0;
-
     const handleScroll = () => {
-        const currentScroll = window.scrollY;
-
-        if (currentScroll > 50) {
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-
-        lastScroll = currentScroll;
     };
 
-    // Throttle com requestAnimationFrame
     let ticking = false;
-
     window.addEventListener('scroll', () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
@@ -112,25 +107,20 @@ const HeaderScroll = (() => {
 })();
 
 /* =============================================================
-   4. SCROLL REVEAL (ANIMAÇÕES)
+   4. SCROLL REVEAL (INTERSECTION OBSERVER)
    ============================================================= */
 const ScrollReveal = (() => {
     const elements = $$('.price-card, .service-item, .section-title, .hero-img, .stat-card');
-
     if (!elements.length) return;
 
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-
-            entry.target.classList.add('reveal');
-
-            // Para de observar após animar (performance)
-            obs.unobserve(entry.target);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal');
+                obs.unobserve(entry.target);
+            }
         });
-    }, {
-        threshold: 0.15
-    });
+    }, { threshold: 0.15 });
 
     elements.forEach(el => {
         el.classList.add('pre-reveal');
@@ -139,16 +129,18 @@ const ScrollReveal = (() => {
 })();
 
 /* =============================================================
-   5. BOTÃO WHATSAPP
+   5. CONFIGURAÇÃO WHATSAPP (SINCRONIZADO)
    ============================================================= */
 const WhatsApp = (() => {
     const btn = $('.btn-nav');
     if (!btn) return;
 
-    const phone = '5500000000000';
+    // Ajustei o número para o que estava no seu HTML anterior
+    const phone = '5583986057772';
     const message = encodeURIComponent('Olá, gostaria de um orçamento!');
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault(); // Evita que o link do HTML execute antes do JS
         window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
     });
 })();

@@ -57,10 +57,18 @@ body {
     color: var(--color-dark);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+
+    /* Textura de Papel e Legibilidade */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+        url('Imagens/seamless.jpg'); 
+    background-repeat: repeat;
+    background-size: 500px;
+    background-attachment: fixed;
 }
 
 /* ==========================================================================
-   3. UTILITÁRIOS (REUTILIZÁVEIS)
+   3. UTILITÁRIOS
    ========================================================================== */
 .container {
     max-width: var(--container-width);
@@ -81,14 +89,14 @@ h1, h2, .logo-text {
     color: var(--color-dark);
 }
 
+.logo-text span {
+    color: var(--color-primary);
+}
+
 .subtitle {
     font-family: var(--font-accent);
     color: var(--color-primary);
     font-size: 1.5rem;
-}
-
-p, a, li {
-    font-weight: 400;
 }
 
 /* ==========================================================================
@@ -97,15 +105,12 @@ p, a, li {
 header {
     position: sticky;
     top: 0;
-    z-index: var(--z-header);
-
+    z-index: 1200;
     min-height: 90px;
     display: flex;
     align-items: center;
-
     background: var(--color-white);
     box-shadow: var(--shadow-sm);
-
     transition: var(--transition-default);
 }
 
@@ -116,99 +121,119 @@ nav {
     width: 100%;
 }
 
+/* Estilos do Logo Novo */
+.symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-logo {
+    height: 45px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
 .logo-text {
     font-size: 2rem;
     letter-spacing: -1px;
 }
 
-.logo-text span {
-    color: var(--color-primary);
+/* MENU LATERAL (Sempre Hamburguer) */
+.nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Escondido */
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px 40px;
+    background: var(--color-white);
+    box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+    transition: left var(--transition-default);
+    z-index: 2000; /* Um valor bem alto para garantir */
+    pointer-events: all; /* Garante que os links recebam cliques */
+    list-style: none;
+    gap: 20px;
+    display: flex;
 }
 
-.nav-links {
-    display: flex;
-    gap: 30px;
-    align-items: center;
+.nav-links.active {
+    left: 0;
+    /* Garante que o menu e o botão fiquem 100% opacos (acesos) */
+    opacity: 1 !important; 
+    visibility: visible;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--color-dark);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     transition: color var(--transition-fast);
 }
 
-.nav-links a:hover,
-.nav-links a:focus-visible {
+/* Estilo específico para o botão de orçamento dentro do menu */
+.nav-links .btn-nav {
+    background-color: var(--color-primary); /* Laranja #FF6800 */
+    color: var(--color-white) !important;   /* Texto branco */
+    padding: 12px 24px;                    /* Espaçamento interno da caixinha */
+    border-radius: var(--radius-sm);       /* Bordas arredondadas */
+    text-align: center;
+    width: 100%;                           /* Faz o botão ocupar a largura do menu */
+    display: inline-block;
+    margin-top: 10px;                      /* Separa um pouco dos links acima */
+    transition: background var(--transition-fast);
+}
+
+.nav-links .btn-nav:hover {
+    background-color: #e55d00;             /* Laranja um pouco mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+.nav-links a:hover {
     color: var(--color-primary);
 }
 
 /* ==========================================================================
-   6. COMPONENTES - BOTÕES
+   6. COMPONENTES - BOTÕES & HAMBURGUER
    ========================================================================== */
+.hamburger {
+    display: block; /* Visível sempre */
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 1300; /* O ícone deve ficar acima de tudo para você poder fechar o menu */
+    position: relative; /* Garante que o z-index funcione */
+}
+
 .btn {
     display: inline-block;
     position: relative;
     overflow: hidden;
-
     padding: 14px 32px;
     border-radius: var(--radius-sm);
-
     font-weight: 800;
     text-transform: uppercase;
-
     border: none;
     cursor: pointer;
-
-    transition: transform var(--transition-default),
-                box-shadow var(--transition-default);
+    transition: all var(--transition-default);
 }
 
-.btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-}
-
-.btn-dark {
-    background-color: var(--color-dark);
-    color: var(--color-white);
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-}
-
-/* Efeito brilho */
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-
-    width: 100%;
-    height: 100%;
-
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: 0.5s;
-}
-
-.btn:hover::before {
-    left: 100%;
-}
+.btn-primary { background-color: var(--color-primary); color: var(--color-white); }
+.btn-dark { background-color: var(--color-dark); color: var(--color-white); }
+.btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 
 /* ==========================================================================
-   7. COMPONENTES - FOOTER
+   7. FOOTER & OVERLAY
    ========================================================================== */
 .main-footer {
     background-color: var(--color-dark);
     color: var(--color-white);
-
     margin-top: var(--space-xl);
     padding: 80px 0 40px;
-
     border-top: 6px solid var(--color-primary);
 }
 
@@ -219,36 +244,14 @@ nav {
     gap: var(--space-lg);
 }
 
-.social-links a {
-    color: var(--color-white);
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: color var(--transition-fast);
-}
-
-.social-links a:hover {
-    color: var(--color-primary);
-}
-
-/* ==========================================================================
-   8. COMPONENTES - MENU MOBILE
-   ========================================================================== */
-.hamburger {
-    display: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-/* Overlay */
 .menu-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.4);
-
     opacity: 0;
     pointer-events: none;
-
     transition: var(--transition-default);
+    z-index: 1100; /* O overlay fica entre o site e o menu */
 }
 
 .menu-overlay.active {
@@ -256,36 +259,10 @@ nav {
     pointer-events: all;
 }
 
-/* Mobile */
+/* ==========================================================================
+   8. AJUSTES RESPONSIVOS (MOBILE)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: -100%;
-
-        width: 280px;
-        height: 100vh;
-
-        flex-direction: column;
-        align-items: flex-start;
-
-        padding: 50px;
-        background: var(--color-white);
-
-        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
-        transition: left var(--transition-default);
-
-        z-index: var(--z-menu);
-    }
-
-    .nav-links.active {
-        left: 0;
-    }
-
     .footer-wrapper {
         flex-direction: column;
         text-align: center;
@@ -293,47 +270,16 @@ nav {
 }
 
 /* ==========================================================================
-   9. STATES (CONTROLADOS VIA JS)
+   9. STATES & DARK MODE
    ========================================================================== */
+body.menu-open { overflow: hidden; }
 
-/* Header scroll */
-header.scrolled {
-    padding: 5px 0;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-/* Lock scroll */
-body.menu-open {
-    overflow: hidden;
-}
-
-/* Reveal animation */
-.pre-reveal {
-    opacity: 0;
-    transform: translateY(40px);
-}
-
-.reveal {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* ==========================================================================
-   10. DARK MODE (PREPARADO)
-   ========================================================================== */
 @media (prefers-color-scheme: dark) {
     body {
         background: #111;
+        background-image: none; /* Remove textura no dark mode */
         color: #eee;
     }
-
-    header {
-        background: #1a1a1a;
-    }
-
-    .nav-links {
-        background: #1a1a1a;
-    }
+    header, .nav-links { background: #1a1a1a; }
+    .nav-links a { color: #eee; }
 }
