@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Engaja Consultoria</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para o formulário Premium */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-info h2 { font-size: 2.5rem; margin-bottom: 30px; }
+        
+        .contact-method {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: #fff5ef;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-100);
+        }
+
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            font-family: var(--font-main);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(255, 104, 0, 0.1);
+        }
+
+        @media (max-width: 992px) {
+            .contact-wrapper { grid-template-columns: 1fr; gap: 50px; }
+            .contact-form { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">ENGAJA<span>.</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="precos.html">Preços</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+                <div class="menu-toggle"><span></span><span></span><span></span></div>
+            </nav>
+        </div>
+    </header>
+
+    <main style="padding-top: 150px;">
+        <section class="container">
+            <div class="contact-wrapper">
+                
+                <div class="contact-info reveal">
+                    <span class="accent-text">Vamos conversar</span>
+                    <h2>Leve a sua empresa para a era da <span style="color:var(--primary)">eficiência</span>.</h2>
+                    <p style="margin-bottom: 40px; color: var(--text-muted);">Preencha o formulário ou utilize os nossos canais diretos. Respondemos em menos de 24 horas.</p>
+
+                    <div class="contact-method">
+                        <div class="icon-circle">📞</div>
+                        <div>
+                            <p style="font-weight: 700;">Telefone / WhatsApp</p>
+                            <a href="https://wa.me/seunumeroaqui" style="color: var(--primary); text-decoration: none;">+351 912 345 678</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="icon-circle">✉️</div>
+                        <div>
+                            <p style="font-weight: 700;">E-mail</p>
+                            <p>geral@engaja.io</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method" style="margin-top: 50px;">
+                        <a href="#" class="btn btn-primary" style="background: #25D366; border: none;">Falar no WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="contact-form reveal">
+                    <form id="leadForm">
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" placeholder="Ex: João Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail Corporativo</label>
+                            <input type="email" placeholder="joao@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Assunto</label>
+                            <select style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--gray-200); outline: none;">
+                                <option>Consultoria Estratégica</option>
+                                <option>Desenvolvimento de Sistemas</option>
+                                <option>Automação de Processos</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensagem</label>
+                            <textarea rows="5" placeholder="Conte-nos um pouco sobre o seu desafio..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer style="margin-top: 100px;">
+        <div class="container">
+            <div style="text-align: center; opacity: 0.5; font-size: 0.8rem;">
+                &copy; 2026 Engaja Consultoria. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Pequena lógica de submissão para feedback UX
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.innerHTML = 'Enviando...';
+            btn.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                alert('Mensagem enviada com sucesso! A nossa equipa entrará em contacto em breve.');
+                btn.innerHTML = 'Enviar Mensagem';
+                btn.style.opacity = '1';
+                this.reset();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

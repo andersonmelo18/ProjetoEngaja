@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços | Engaja Consultoria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="menu-overlay" id="overlay"></div>
+
+    <header>
+        <nav class="container">
+            <div class="logo-wrapper">
+                <a href="index.html" style="display: flex; align-items: center; gap: 12px;">
+                    <div class="symbol">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="50" r="20" fill="#FF6800"/>
+                            <circle cx="70" cy="50" r="20" fill="#434343"/>
+                            <path d="M30 50H70" stroke="#FF6800" stroke-width="8"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">En<span>gaja</span></div>
+                </a>
+            </div>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html#sobre">Sobre nós</a></li>
+                <li><a href="servicos.html" class="active">Serviços</a></li>
+                <li><a href="precos.html">Preços</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#" class="btn-animate btn-nav">Orçamento</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
+
+    <main class="container page-padding">
+        <div class="section-title">
+            <span class="subtitle">O que fazemos de melhor</span>
+            <h1>Nossas Especialidades</h1>
+            <p>Soluções inteligentes que unem engenharia, gestão e tecnologia.</p>
+        </div>
+
+        <div class="services-detailed">
+            <article class="service-item">
+                <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="service-info">
+                    <h2>Desenvolvimento Web</h2>
+                    <p>Desenvolvemos ecossistemas digitais de alta performance. Desde Landing Pages otimizadas para conversão até sistemas complexos de gestão (ERP/CRM) sob medida para a sua operação.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Sites Responsivos</li>
+                        <li><i class="fas fa-check"></i> E-commerce de alta escala</li>
+                        <li><i class="fas fa-check"></i> SEO Avançado</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="service-info">
+                    <h2>Assessoria Júnior & Gestão</h2>
+                    <p>Aplicamos metodologias ágeis para transformar a gestão do seu negócio. Otimizamos processos internos, reduzimos custos operacionais e aumentamos a lucratividade através de análise de dados.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Planejamento Estratégico</li>
+                        <li><i class="fas fa-check"></i> Diagnóstico Organizacional</li>
+                        <li><i class="fas fa-check"></i> Gestão Financeira</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="service-item">
+                <div class="service-icon"><i class="fas fa-flask"></i></div>
+                <div class="service-info">
+                    <h2>Engenharia de Alimentos</h2>
+                    <p>Consultoria especializada para o setor alimentício. Garantimos conformidade técnica, desenvolvimento de novos produtos, rotulagem e implementação de boas práticas de fabricação (BPF).</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Desenvolvimento de Produtos</li>
+                        <li><i class="fas fa-check"></i> Tabelas Nutricionais</li>
+                        <li><i class="fas fa-check"></i> Controle de Qualidade</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+
+        <section class="services-cta" style="margin-top: 100px; padding: 60px; background: var(--dark); border-radius: 12px; text-align: center; color: white;">
+            <h2 style="color: white; margin-bottom: 20px;">Pronto para transformar sua empresa?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">Agende um diagnóstico gratuito com nossos consultores especialistas.</p>
+            <a href="https://wa.me/5583986057772" class="btn-animate btn-primary">Solicitar Consultoria Grátis</a>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-wrapper">
+            <div class="footer-logo">
+                <div class="logo-text" style="color: white;">En<span style="color: #FF6800;">gaja</span></div>
+            </div>
+            <div class="footer-info-box">
+                <p class="copyright-text">Copyright © 2026 Engaja Consultoria</p>
+                <p class="rights-text">Todos os direitos reservados</p>
+                <ul class="social-links">
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

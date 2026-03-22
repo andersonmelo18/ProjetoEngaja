@@ -1,0 +1,339 @@
+/* ==========================================================================
+   1. TOKENS (DESIGN SYSTEM)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap');
+
+:root {
+    /* Cores */
+    --color-primary: #FF6800;
+    --color-primary-rgb: 255, 104, 0;
+    --color-dark: #434343;
+    --color-black: #000;
+    --color-white: #fff;
+
+    /* Tipografia */
+    --font-primary: 'Montserrat', sans-serif;
+    --font-accent: 'Brittany', 'Brush Script MT', cursive;
+
+    /* Espaçamento */
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 40px;
+    --space-xl: 80px;
+
+    /* Bordas */
+    --radius-sm: 4px;
+
+    /* Sombra */
+    --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
+    --shadow-md: 0 8px 20px rgba(var(--color-primary-rgb), 0.3);
+
+    /* Transições */
+    --transition-fast: 0.2s ease;
+    --transition-default: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Layout */
+    --container-width: 1200px;
+
+    /* Z-index */
+    --z-header: 1000;
+    --z-menu: 1100;
+}
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   3. UTILITÁRIOS (REUTILIZÁVEIS)
+   ========================================================================== */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==========================================================================
+   4. TIPOGRAFIA
+   ========================================================================== */
+h1, h2, .logo-text {
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-dark);
+}
+
+.subtitle {
+    font-family: var(--font-accent);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+p, a, li {
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   5. LAYOUT - HEADER / NAV
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+
+    background: var(--color-white);
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition-default);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-text {
+    font-size: 2rem;
+    letter-spacing: -1px;
+}
+
+.logo-text span {
+    color: var(--color-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   6. COMPONENTES - BOTÕES
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+    padding: 14px 32px;
+    border-radius: var(--radius-sm);
+
+    font-weight: 800;
+    text-transform: uppercase;
+
+    border: none;
+    cursor: pointer;
+
+    transition: transform var(--transition-default),
+                box-shadow var(--transition-default);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-dark {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Efeito brilho */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* ==========================================================================
+   7. COMPONENTES - FOOTER
+   ========================================================================== */
+.main-footer {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+
+    margin-top: var(--space-xl);
+    padding: 80px 0 40px;
+
+    border-top: 6px solid var(--color-primary);
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.social-links a {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color var(--transition-fast);
+}
+
+.social-links a:hover {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   8. COMPONENTES - MENU MOBILE
+   ========================================================================== */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Overlay */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: var(--transition-default);
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+
+        width: 280px;
+        height: 100vh;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 50px;
+        background: var(--color-white);
+
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+        transition: left var(--transition-default);
+
+        z-index: var(--z-menu);
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .footer-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   9. STATES (CONTROLADOS VIA JS)
+   ========================================================================== */
+
+/* Header scroll */
+header.scrolled {
+    padding: 5px 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Lock scroll */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Reveal animation */
+.pre-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ==========================================================================
+   10. DARK MODE (PREPARADO)
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #111;
+        color: #eee;
+    }
+
+    header {
+        background: #1a1a1a;
+    }
+
+    .nav-links {
+        background: #1a1a1a;
+    }
+}
