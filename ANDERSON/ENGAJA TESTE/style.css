@@ -1,26 +1,35 @@
-/* style.css */
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dancing+Script:wght@400;700&display=swap');
 
 :root {
+    /* Cores Principais */
     --primary: #FF6800;
     --primary-hover: #e65d00;
-    --secondary: #434343;
     --dark: #0f0f0f;
-    --light: #f8f9fa;
     --white: #ffffff;
+    
+    /* Paleta de Cinzas (Incluindo o Cinza Original #434343) */
+    --secondary: #434343; /* Seu cinza antigo para elementos secundários */
+    --bg-gray-dark: #434343; /* Classe de fundo para seções específicas */
     --gray-100: #f1f1f1;
     --gray-200: #e0e0e0;
+    
+    /* Textos */
     --text-main: #1a1a1a;
     --text-muted: #666666;
+    --text-light: #cccccc;
     
+    /* Tipografia da Marca Engaja */
     --font-main: 'Montserrat', sans-serif;
-    --font-accent: 'Dancing Script', cursive; /* Substituto elegante para Brittany */
+    --font-accent: 'Dancing Script', cursive;
     
+    /* Efeitos */
     --shadow: 0 10px 30px rgba(0,0,0,0.08);
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +39,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -39,8 +49,14 @@ body {
     overflow-x: hidden;
 }
 
-/* Typography */
-h1, h2, h3 { font-weight: 800; line-height: 1.2; }
+/* ==========================================================================
+   2. TIPOGRAFIA E ELEMENTOS REUTILIZÁVEIS
+   ========================================================================== */
+h1, h2, h3 { 
+    font-weight: 800; 
+    line-height: 1.2; 
+}
+
 .accent-text { 
     font-family: var(--font-accent); 
     color: var(--primary); 
@@ -48,16 +64,23 @@ h1, h2, h3 { font-weight: 800; line-height: 1.2; }
     font-weight: 400;
 }
 
-/* Layout */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 5%;
 }
 
-section { padding: 100px 0; }
+section { 
+    padding: 80px 0; 
+}
 
-/* Navbar */
+@media (min-width: 768px) {
+    section { padding: 120px 0; }
+}
+
+/* ==========================================================================
+   3. LOGO E NAVEGAÇÃO (ESTILO ENGAJA)
+   ========================================================================== */
 header {
     position: fixed;
     top: 0;
@@ -68,9 +91,9 @@ header {
 }
 
 header.scrolled {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 15px 0;
+    padding: 12px 0;
     box-shadow: var(--shadow);
 }
 
@@ -80,19 +103,44 @@ nav {
     align-items: center;
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--dark);
-    text-decoration: none;
+/* Estilos do Logo Novo */
+.symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo span { color: var(--primary); }
+.header-logo {
+    height: 45px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 2rem;
+    letter-spacing: -1px;
+}
+
+/* --- ADICIONE ISTO AQUI --- */
+.logo-wrapper a {
+    text-decoration: none !important;
+    outline: none;
+    border: none;
+}
+
+/* Garante que o estado "visitado" (roxo) não apareça */
+.logo-wrapper a:visited, 
+.logo-wrapper a:active {
+    text-decoration: none !important;
+    color: inherit; /* Mantém a cor original do texto */
+}
 
 .nav-links {
     display: flex;
     gap: 30px;
     list-style: none;
+    align-items: center;
 }
 
 .nav-links a {
@@ -105,7 +153,25 @@ nav {
 
 .nav-links a:hover { color: var(--primary); }
 
-/* Buttons */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: var(--dark);
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+/* ==========================================================================
+   4. BOTÕES E COMPONENTES
+   ========================================================================== */
 .btn {
     padding: 14px 28px;
     border-radius: 50px;
@@ -115,6 +181,7 @@ nav {
     transition: var(--transition);
     cursor: pointer;
     border: none;
+    text-align: center;
 }
 
 .btn-primary {
@@ -131,6 +198,7 @@ nav {
 .btn-outline {
     border: 2px solid var(--primary);
     color: var(--primary);
+    background: transparent;
 }
 
 .btn-outline:hover {
@@ -138,32 +206,10 @@ nav {
     color: var(--white);
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    background: radial-gradient(circle at top right, #fff5ef 0%, #ffffff 50%);
-    padding-top: 80px;
-}
-
-.hero-content { max-width: 700px; }
-
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    margin-bottom: 35px;
-}
-
 /* Cards & Grids */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
@@ -182,23 +228,59 @@ nav {
     border-color: var(--primary);
 }
 
-/* Pricing Table */
+/* ==========================================================================
+   5. SEÇÃO HERO
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top right, #fff5ef 0%, #ffffff 50%);
+    padding-top: 100px;
+}
+
+.hero-content { 
+    max-width: 800px; 
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 8vw, 4rem);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: var(--text-muted);
+    margin-bottom: 35px;
+}
+
+/* ==========================================================================
+   6. PREÇOS E FAQ
+   ========================================================================== */
 .pricing-card {
     text-align: center;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .pricing-card.featured {
     border: 2px solid var(--primary);
-    transform: scale(1.05);
 }
 
-.pricing-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-.price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+@media (min-width: 992px) {
+    .pricing-card.featured { transform: scale(1.05); }
+}
+
+.price { font-size: clamp(2.5rem, 5vw, 3rem); font-weight: 800; margin: 20px 0; }
 .price span { font-size: 1rem; color: var(--text-muted); }
 
 /* FAQ Accordion */
+.faq-container { max-width: 800px; margin: 0 auto; }
+
 .faq-item {
     border-bottom: 1px solid var(--gray-200);
     padding: 20px 0;
@@ -210,6 +292,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     font-weight: 700;
+    gap: 15px;
 }
 
 .faq-answer {
@@ -221,33 +304,241 @@ nav {
 }
 
 .faq-item.active .faq-answer {
-    max-height: 200px;
+    max-height: 500px; 
     margin-top: 15px;
 }
 
-/* Footer */
-footer {
-    background: var(--dark);
+/* ==========================================================================
+   6.5 SEÇÃO CTA (CALL TO ACTION)
+   ========================================================================== */
+.cta-section {
+    padding: 60px 0; /* Espaçamento entre o conteúdo e o footer */
+}
+
+.cta-container {
+    background: linear-gradient(135deg, #434343 0%, #2b2b2b 100%);
+    padding: 80px 40px;
+    border-radius: 24px; 
     color: var(--white);
-    padding: 80px 0 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cta-container h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.cta-container p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #cccccc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   8. FOOTER & LOGO INFERIOR (AJUSTADO: MARCA À ESQUERDA)
+   ========================================================================== */
+footer {
+    background: #434343; 
+    color: var(--white);
+    padding: 80px 0 40px;
+    border-top: 6px solid var(--primary); 
+    margin-top: -1px; /* Isso "morde" a seção de cima eliminando frestas */
+    position: relative;
+    z-index: 2;
 }
 
 .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
     margin-bottom: 50px;
 }
 
-.footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: block; color: #fff; text-decoration: none; }
-.footer-logo span { color: var(--primary); }
-.footer-links h4 { margin-bottom: 20px; color: var(--primary); }
-.footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 10px; }
-.footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
-.footer-links a:hover { color: var(--primary); }
+/* Lado Esquerdo: Marca e Frase */
+.footer-brand {
+    flex: 1;
+    min-width: 280px;
+}
 
-/* Animations */
+/* --- Subseção: Elementos da Logo Engaja --- */
+.footer-logo { 
+    font-size: 1.8rem;
+    font-weight: 800; 
+    margin-bottom: 15px; 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--white); 
+    text-decoration: none !important; 
+    letter-spacing: -1px;
+}
+
+.footer-logo span { 
+    color: var(--primary); 
+}
+
+.footer-logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Frase abaixo da Logo */
+.footer-tagline {
+    font-size: 0.9rem;
+    color: #ccc;
+    max-width: 320px;
+    line-height: 1.5;
+}
+
+/* Lado Direito: Container das colunas de links */
+.footer-nav-wrapper {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* --- Subseção: Links e Navegação --- */
+.footer-links h4 { 
+    margin-bottom: 20px; 
+    color: var(--primary); 
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { 
+    color: #ccc; 
+    text-decoration: none; 
+    transition: var(--transition); 
+}
+
+.footer-links a:hover { 
+    color: var(--primary); 
+    padding-left: 5px;
+}
+
+/* --- Subseção: Social e Bottom Bar --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.social-links a {
+    color: var(--white) !important;
+    font-size: 1.6rem; /* Aumentei um pouco para melhor visibilidade */
+    transition: var(--transition);
+    display: inline-block;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: var(--primary) !important;
+    transform: translateY(-3px);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+    
+    .footer-nav-wrapper {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   8. UTILITÁRIOS DE MARCA (SEÇÃO CINZA #434343)
+   ========================================================================== */
+.bg-cinza-custom {
+    background-color: #434343 !important; 
+    color: var(--white);
+}
+
+.bg-cinza-custom h1, 
+.bg-cinza-custom h2, 
+.bg-cinza-custom h3 {
+    color: var(--white);
+}
+
+.bg-cinza-custom .text-muted {
+    color: var(--text-light);
+}
+
+.bg-cinza-custom .card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+/* ==========================================================================
+   9. AJUSTES RESPONSIVOS ESPECÍFICOS (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    footer {
+        padding: 60px 0 30px;
+        text-align: center;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+    
+    .footer-links a:hover {
+        padding-left: 0;
+    }
+}
+
+/* ==========================================================================
+   9. ANIMAÇÕES E RESPONSIVIDADE
+   ========================================================================== */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -259,26 +550,30 @@ footer {
     transform: translateY(0);
 }
 
-/* Mobile Menu */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    width: 30px;
-    height: 3px;
-    background: var(--dark);
-    border-radius: 3px;
-}
-
 @media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Simplificado para o exemplo, JS ativa */
-    }
     .menu-toggle { display: flex; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .pricing-card.featured { transform: scale(1); }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        transition: 0.5s ease-in-out;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .hero {
+        text-align: center;
+        padding-top: 60px;
+    }
+
+    .hero-content { margin: 0 auto; }
 }
