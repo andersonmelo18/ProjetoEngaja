@@ -1,31 +1,47 @@
 /* ==========================================================================
    1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Dancing+Script:wght@400;700&display=swap');
+/* Importação apenas da Montserrat (Padrão) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* Importação das Fontes Customizadas (Condensadas e Subtítulos) */
+/* Crie uma pasta 'fonts' e coloque os arquivos .ttf ou .otf lá dentro */
+@font-face {
+    font-family: 'Rahong';
+    src: url('fonts/Rahong-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Brittany';
+    src: url('fonts/BrittanySignature.ttf') format('truetype'); /* Substitua pelo nome exato do seu arquivo */
+    font-weight: normal;
+    font-style: normal;
+}
 
 :root {
-    /* Cores Principais */
-    --primary: #FF6800;
+    /* Paleta de Cores IDV */
+    --primary: #FF6800;       /* LARANJA IDV */
     --primary-hover: #e65d00;
-    --dark: #0f0f0f;
-    --white: #ffffff;
+    --dark: #000000;          /* PRETO IDV */
+    --white: #ffffff;         /* BRANCO IDV */
 
-    /* Paleta de Cinzas (Incluindo o Cinza Original #434343) */
-    --secondary: #434343;
-    /* Seu cinza antigo para elementos secundários */
-    --bg-gray-dark: #434343;
-    /* Classe de fundo para seções específicas */
+    /* Paleta de Cinzas */
+    --secondary: #434343;     /* CINZA IDV */
+    --bg-gray-dark: #434343;  /* CINZA IDV */
     --gray-100: #f1f1f1;
     --gray-200: #e0e0e0;
 
     /* Textos */
-    --text-main: #1a1a1a;
+    --text-main: #000000;     /* PRETO IDV */
     --text-muted: #666666;
     --text-light: #cccccc;
 
-    /* Tipografia da Marca Engaja */
-    --font-main: 'Montserrat', sans-serif;
-    --font-accent: 'Dancing Script', cursive;
+    /* Tipografia IDV */
+    --font-main: 'Montserrat', sans-serif; /* Padrão (Texto e Subtítulo Classic) */
+    --font-condensed: 'Rahong', sans-serif; /* Condensada (Título e Texto) */
+    --font-accent: 'Brittany', cursive;     /* Condensada (Subtítulo) */
 
     /* Efeitos */
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -54,18 +70,23 @@ body {
 /* ==========================================================================
    2. TIPOGRAFIA E ELEMENTOS REUTILIZÁVEIS
    ========================================================================== */
-h1,
-h2,
-h3 {
-    font-weight: 800;
+h1, h2, h3 {
+    font-family: var(--font-main);
+    font-weight: 800; /* Montserrat Extra-Bold (IDV) */
     line-height: 1.2;
 }
 
+/* Classes utilitárias para fontes condensadas caso precise usar direto no HTML */
+.font-rahong {
+    font-family: var(--font-condensed);
+    font-weight: 600;
+}
+
 .accent-text {
-    font-family: var(--font-accent);
+    font-family: var(--font-accent); /* Brittany (Subtítulo Condensado IDV) */
     color: var(--primary);
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 2rem; /* Aumentado levemente para compensar o tamanho de fontes cursivas */
+    font-weight: normal;
 }
 
 .container {
@@ -78,14 +99,8 @@ section {
     padding: 80px 0;
 }
 
-@media (min-width: 768px) {
-    section {
-        padding: 120px 0;
-    }
-}
-
 /* ==========================================================================
-   3. LOGO E NAVEGAÇÃO (ESTILO ENGAJA)
+   3. LOGO E NAVEGAÇÃO
    ========================================================================== */
 header {
     position: fixed;
@@ -109,7 +124,6 @@ nav {
     align-items: center;
 }
 
-/* Estilos do Logo Novo */
 .symbol {
     display: flex;
     align-items: center;
@@ -126,21 +140,19 @@ nav {
 .logo-text {
     font-size: 2rem;
     letter-spacing: -1px;
+    font-weight: 800; /* Montserrat Extra-Bold */
 }
 
-/* --- ADICIONE ISTO AQUI --- */
 .logo-wrapper a {
     text-decoration: none !important;
     outline: none;
     border: none;
 }
 
-/* Garante que o estado "visitado" (roxo) não apareça */
 .logo-wrapper a:visited,
 .logo-wrapper a:active {
     text-decoration: none !important;
     color: inherit;
-    /* Mantém a cor original do texto */
 }
 
 .nav-links {
@@ -280,12 +292,6 @@ nav {
     border: 2px solid var(--primary);
 }
 
-@media (min-width: 992px) {
-    .pricing-card.featured {
-        transform: scale(1.05);
-    }
-}
-
 .price {
     font-size: clamp(2.5rem, 5vw, 3rem);
     font-weight: 800;
@@ -331,15 +337,14 @@ nav {
 }
 
 /* ==========================================================================
-   6.5 SEÇÃO CTA (CALL TO ACTION)
+   7. SEÇÃO CTA (CALL TO ACTION)
    ========================================================================== */
 .cta-section {
     padding: 60px 0;
-    /* Espaçamento entre o conteúdo e o footer */
 }
 
 .cta-container {
-    background: linear-gradient(135deg, #434343 0%, #2b2b2b 100%);
+    background: linear-gradient(135deg, var(--bg-gray-dark) 0%, #2b2b2b 100%);
     padding: 80px 40px;
     border-radius: 24px;
     color: var(--white);
@@ -358,23 +363,22 @@ nav {
 .cta-container p {
     font-size: 1.1rem;
     margin-bottom: 40px;
-    color: #cccccc;
+    color: var(--text-light);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
 
 /* ==========================================================================
-   8. FOOTER & LOGO INFERIOR (AJUSTADO: MARCA À ESQUERDA)
+   8. FOOTER & LOGO INFERIOR
    ========================================================================== */
 footer {
     width: 100%;
-    background: #434343;
+    background: var(--bg-gray-dark);
     color: var(--white);
-    padding: 80px 0 40px;
+    padding: 80px 0 0 0;
     border-top: 6px solid var(--primary);
     margin-top: -1px;
-    /* Isso "morde" a seção de cima eliminando frestas */
     position: relative;
     z-index: 2;
 }
@@ -388,13 +392,11 @@ footer {
     margin-bottom: 50px;
 }
 
-/* Lado Esquerdo: Marca e Frase */
 .footer-brand {
     flex: 1;
     min-width: 280px;
 }
 
-/* --- Subseção: Elementos da Logo Engaja --- */
 .footer-logo {
     font-size: 1.8rem;
     font-weight: 800;
@@ -418,22 +420,19 @@ footer {
     object-fit: contain;
 }
 
-/* Frase abaixo da Logo */
 .footer-tagline {
     font-size: 0.9rem;
-    color: #ccc;
+    color: var(--text-light);
     max-width: 320px;
     line-height: 1.5;
 }
 
-/* Lado Direito: Container das colunas de links */
 .footer-nav-wrapper {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
 }
 
-/* --- Subseção: Links e Navegação --- */
 .footer-links h4 {
     margin-bottom: 20px;
     color: var(--primary);
@@ -451,7 +450,7 @@ footer {
 }
 
 .footer-links a {
-    color: #ccc;
+    color: var(--text-light);
     text-decoration: none;
     transition: var(--transition);
 }
@@ -461,17 +460,7 @@ footer {
     padding-left: 5px;
 }
 
-/* --- Subseção: Social e Bottom Bar --- */
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
+/* --- Social --- */
 .social-links {
     display: flex;
     gap: 15px;
@@ -481,7 +470,6 @@ footer {
 .social-links a {
     color: var(--white) !important;
     font-size: 1.6rem;
-    /* Aumentei um pouco para melhor visibilidade */
     transition: var(--transition);
     display: inline-block;
     text-decoration: none;
@@ -492,52 +480,31 @@ footer {
     transform: translateY(-3px);
 }
 
-/* Responsividade Mobile */
-@media (max-width: 768px) {
-    .footer-grid {
-        flex-direction: column;
-        text-align: center;
-    }
+/* --- Bottom Bar --- */
+.footer-bottom {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 0;
+    margin-top: 40px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
 
-    .footer-brand {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 auto;
-    }
-
-    .footer-nav-wrapper {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 30px 0;
-        margin-top: 40px;
-        width: 100%;
-
-        display: flex;
-        justify-content: center;
-        /* ✅ CENTRALIZA DE VERDADE */
-        align-items: center;
-        text-align: center;
-
-        flex-wrap: wrap;
-    }
-
-    .footer-bottom p {
-        margin: 0;
-        color: #ccc;
-        font-size: 0.9rem;
-    }
+.footer-bottom p {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
 }
 
 /* ==========================================================================
-   8. UTILITÁRIOS DE MARCA (SEÇÃO CINZA #434343)
+   9. UTILITÁRIOS DE MARCA
    ========================================================================== */
 .bg-cinza-custom {
-    background-color: #434343 !important;
+    background-color: var(--bg-gray-dark) !important;
     color: var(--white);
 }
 
@@ -557,36 +524,7 @@ footer {
     color: var(--white);
 }
 
-/* ==========================================================================
-   9. AJUSTES RESPONSIVOS ESPECÍFICOS (MOBILE)
-   ========================================================================== */
-@media (max-width: 768px) {
-    footer {
-        padding: 60px 0 30px;
-        text-align: center;
-    }
-
-    .footer-logo {
-        justify-content: center;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center !important;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .footer-links a:hover {
-        padding-left: 0;
-    }
-}
-
-/* ==========================================================================
-   9. ANIMAÇÕES E RESPONSIVIDADE
-   ========================================================================== */
+/* Animações (Reveal) */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -598,7 +536,23 @@ footer {
     transform: translateY(0);
 }
 
+/* ==========================================================================
+   10. MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
+@media (min-width: 768px) {
+    section {
+        padding: 120px 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .pricing-card.featured {
+        transform: scale(1.05);
+    }
+}
+
 @media (max-width: 768px) {
+    /* Navegação */
     .menu-toggle {
         display: flex;
     }
@@ -620,6 +574,7 @@ footer {
         right: 0;
     }
 
+    /* Hero */
     .hero {
         text-align: center;
         padding-top: 60px;
@@ -628,17 +583,41 @@ footer {
     .hero-content {
         margin: 0 auto;
     }
-}
 
-.footer-bottom {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-}
+    /* Footer */
+    footer {
+        padding: 60px 0 0 0;
+        text-align: center;
+    }
 
-.footer-bottom p {
-    width: 100%;
-    text-align: center;
-    margin: 0;
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
+
+    .footer-nav-wrapper {
+        justify-content: center;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-links a:hover {
+        padding-left: 0;
+    }
 }
