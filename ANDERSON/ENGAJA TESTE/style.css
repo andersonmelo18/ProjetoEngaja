@@ -621,3 +621,14 @@ footer {
         padding-left: 0;
     }
 }
+
+/* 1. Remove o azul padrão e o sublinhado de TODOS os links do site inteiro */
+a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+/* 2. Garante que o "gaja" do logo fique sempre laranja (Header e Footer) */
+.logo-text span {
+    color: var(--primary);
+}
