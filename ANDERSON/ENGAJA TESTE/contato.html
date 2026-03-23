@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,8 +16,11 @@
             align-items: start;
         }
 
-        .contact-info h2 { font-size: 2.5rem; margin-bottom: 30px; }
-        
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
         .contact-method {
             margin-bottom: 30px;
             display: flex;
@@ -44,10 +48,18 @@
             border: 1px solid var(--gray-100);
         }
 
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-        
-        .form-group input, 
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 15px;
@@ -58,18 +70,25 @@
             outline: none;
         }
 
-        .form-group input:focus, 
+        .form-group input:focus,
         .form-group textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(255, 104, 0, 0.1);
         }
 
         @media (max-width: 992px) {
-            .contact-wrapper { grid-template-columns: 1fr; gap: 50px; }
-            .contact-form { padding: 30px; }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -97,49 +116,57 @@
         </div>
     </header>
 
-    <main style="padding-top: 150px;">
+    <main style="padding-top: 150px; padding-bottom: 80px;">
         <section class="container">
             <div class="contact-wrapper">
-                
+
                 <div class="contact-info reveal">
                     <span class="accent-text">Vamos conversar</span>
-                    <h2>Leve a sua empresa para a era da <span style="color:var(--primary)">eficiência</span>.</h2>
-                    <p style="margin-bottom: 40px; color: var(--text-muted);">Preencha o formulário ou utilize os nossos canais diretos. Respondemos em menos de 24 horas.</p>
+                    <h2 class="font-rahong">Leve a sua empresa para a era da <span
+                            style="color:var(--primary)">eficiência</span>.</h2>
+                    <p style="margin-bottom: 40px; color: var(--text-muted);">Preencha o formulário ou utilize os nossos
+                        canais diretos. Respondemos em menos de 24 horas.</p>
 
                     <div class="contact-method">
-                        <div class="icon-circle">📞</div>
+                        <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
                         <div>
                             <p style="font-weight: 700;">Telefone / WhatsApp</p>
-                            <a href="https://wa.me/5583986057772" style="color: var(--primary); text-decoration: none;">+351 912 345 678</a>
+                            <a href="https://wa.me/351912345678" target="_blank"
+                                style="color: var(--primary); text-decoration: none;">+351 912 345 678</a>
                         </div>
                     </div>
 
                     <div class="contact-method">
-                        <div class="icon-circle">✉️</div>
+                        <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
                         <div>
                             <p style="font-weight: 700;">E-mail</p>
-                            <p>geral@engaja.io</p>
+                            <a href="mailto:geral@engaja.io"
+                                style="color: inherit; text-decoration: none;">geral@engaja.io</a>
                         </div>
                     </div>
 
                     <div class="contact-method" style="margin-top: 50px;">
-                        <a href="https://wa.me/5583986057772" class="btn btn-primary" style="background: #25D366; border: none;">Falar no WhatsApp</a>
+                        <a href="https://wa.me/351912345678" target="_blank" class="btn btn-primary"
+                            style="background: #25D366; border: none; display: inline-flex; align-items: center; gap: 10px;">
+                            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Falar no WhatsApp
+                        </a>
                     </div>
                 </div>
 
                 <div class="contact-form reveal">
                     <form id="leadForm">
                         <div class="form-group">
-                            <label>Nome Completo</label>
-                            <input type="text" placeholder="Ex: João Silva" required>
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" placeholder="Ex: João Silva" required>
                         </div>
                         <div class="form-group">
-                            <label>E-mail Corporativo</label>
-                            <input type="email" placeholder="joao@empresa.com" required>
+                            <label for="email">E-mail Corporativo</label>
+                            <input type="email" id="email" placeholder="joao@empresa.com" required>
                         </div>
                         <div class="form-group">
-                            <label>Assunto</label>
-                            <select style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--gray-200); outline: none;">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto"
+                                style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--gray-200); outline: none; font-family: var(--font-main);">
                                 <option>Consultoria Estratégica</option>
                                 <option>Desenvolvimento de Sistemas</option>
                                 <option>Automação de Processos</option>
@@ -147,15 +174,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Mensagem</label>
-                            <textarea rows="5" placeholder="Conte-nos um pouco sobre o seu desafio..."></textarea>
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" rows="5" placeholder="Conte-nos um pouco sobre o seu desafio..."
+                                required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
                     </form>
                 </div>
 
             </div>
-            <br>
         </section>
     </main>
 
@@ -210,12 +237,12 @@
     <script src="script.js"></script>
     <script>
         // Pequena lógica de submissão para feedback UX
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
+        document.getElementById('leadForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = this.querySelector('button');
             btn.innerHTML = 'Enviando...';
             btn.style.opacity = '0.7';
-            
+
             setTimeout(() => {
                 alert('Mensagem enviada com sucesso! A nossa equipa entrará em contacto em breve.');
                 btn.innerHTML = 'Enviar Mensagem';
@@ -225,4 +252,5 @@
         });
     </script>
 </body>
+
 </html>

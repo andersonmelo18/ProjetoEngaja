@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
@@ -35,50 +37,60 @@
         </div>
     </header>
 
-    <section class="container" style="padding-top: 150px;">
-    <div style="text-align: center; margin-bottom: 60px;">
-        <h1>Planos feitos para o seu tamanho</h1>
-    </div>
-    <div class="grid">
-        <div class="card pricing-card reveal">
-            <h3>Básico</h3>
-            <div class="price">R$ 2k<span>/mês</span></div>
-            <p>Ideal para startups iniciantes.</p>
-            <ul style="list-style: none; margin: 20px 0; text-align: left;">
-                <li>✓ Suporte 8/5</li>
-                <li>✓ 1 Consultoria Mensal</li>
-                <li>✓ Relatório Básico</li>
-            </ul>
-            <br><br><br><br>
-            <a href="contato.html" class="btn btn-outline">Selecionar</a>
-        </div>
-        <div class="card pricing-card featured reveal">
-            <span style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.7rem; position: absolute; top: 20px; right: 20px;">MAIS POPULAR</span>
-            <h3>Professional</h3>
-            <div class="price">R$ 5k<span>/mês</span></div>
-            <p>Para empresas em escala.</p>
-            <ul style="list-style: none; margin: 20px 0; text-align: left;">
-                <li>✓ Suporte 24/7</li>
-                <li>✓ 4 Consultorias Mensais</li>
-                <li>✓ Dashboards em Tempo Real</li>
-            </ul>
-            <br><br><br>
-            <a href="contato.html" class="btn btn-primary">Selecionar</a>
-        </div>
-        <div class="card pricing-card reveal">
-            <h3>Enterprise</h3>
-            <div class="price">Sob Medida</div>
-            <p>Soluções complexas globais.</p>
-            <ul style="list-style: none; margin: 20px 0; text-align: left;">
-                <li>✓ Gerente de Conta Dedicado</li>
-                <li>✓ Desenvolvimento Customizado</li>
-                <li>✓ SLA de 99.9%</li>
-            </ul>
-            <a href="contato.html" class="btn btn-outline">Falar com um desenvolvedor</a>
-        </div>
-    </div>
-    <br>
-</section>
+    <main>
+        <section class="container" style="padding-top: 150px; padding-bottom: 80px;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <span class="accent-text">Invista no seu crescimento</span>
+                <h1 class="font-rahong" style="font-size: 3rem;">Planos feitos para o seu tamanho</h1>
+            </div>
+
+            <div class="grid">
+                <div class="card pricing-card reveal" style="display: flex; flex-direction: column; margin-top: 20px;">
+                    <h3>Básico</h3>
+                    <div class="price font-rahong">R$ 2k<span
+                            style="font-family: var(--font-main); font-size: 1rem; font-weight: normal;">/mês</span>
+                    </div>
+                    <p>Ideal para startups iniciantes.</p>
+                    <ul style="list-style: none; margin: 20px 0 40px 0; text-align: left;">
+                        <li>✓ Suporte 8/5</li>
+                        <li>✓ 1 Consultoria Mensal</li>
+                        <li>✓ Relatório Básico</li>
+                    </ul>
+                    <a href="contato.html" class="btn btn-outline" style="margin-top: auto;">Selecionar</a>
+                </div>
+
+                <div class="card pricing-card featured reveal" style="display: flex; flex-direction: column; position: relative; border: 2px solid var(--primary);">
+                    
+                    <span style="background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.70rem; position: absolute; top: 8px; right: 20px; font-weight: bold; box-shadow: 0 4px 10px rgba(255, 104, 0, 0.3); white-space: nowrap;">
+                        MAIS POPULAR
+                    </span>
+                    
+                    <h3>Professional</h3>
+                    <div class="price font-rahong">R$ 5k<span style="font-family: var(--font-main); font-size: 1rem; font-weight: normal;">/mês</span></div>
+                    <p>Para empresas em escala.</p>
+                    <ul style="list-style: none; margin: 20px 0 40px 0; text-align: left;">
+                        <li>✓ Suporte 24/7</li>
+                        <li>✓ 4 Consultorias Mensais</li>
+                        <li>✓ Dashboards em Tempo Real</li>
+                    </ul>
+                    <a href="contato.html" class="btn btn-primary" style="margin-top: auto;">Selecionar</a>
+                </div>
+
+                <div class="card pricing-card reveal" style="display: flex; flex-direction: column; margin-top: 20px;">
+                    <h3>Enterprise</h3>
+                    <div class="price font-rahong" style="font-size: 2.5rem;">Sob Medida</div>
+                    <p>Soluções complexas globais.</p>
+                    <ul style="list-style: none; margin: 20px 0 40px 0; text-align: left;">
+                        <li>✓ Gerente de Conta Dedicado</li>
+                        <li>✓ Desenvolvimento Customizado</li>
+                        <li>✓ SLA de 99.9%</li>
+                    </ul>
+                    <a href="contato.html" class="btn btn-outline"
+                        style="margin-top: auto; padding: 12px 15px; font-size: 0.9rem;">Falar com um especialista</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="main-footer">
         <div class="container">
@@ -130,4 +142,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
